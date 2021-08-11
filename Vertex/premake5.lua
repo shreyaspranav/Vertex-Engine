@@ -4,7 +4,12 @@ project "Vertex"
 
     targetdir("%{wks.location}/bin/" .. outputdir .. "/")
     objdir ("%{wks.location}/bin/" .. outputdir .. "/")
+
     
+    IncludeDir = {}
+
+    IncludeDir["GLFW"] = "vendor/GLFW/include"
+
     pchheader "pch.h"
     pchsource "src/pch/pch.cpp"
 
@@ -12,9 +17,16 @@ project "Vertex"
         "src/**.h",
         "src/**.cpp"
     }
-
+    
     includedirs {
-        "src"
+        "vendor/spdlog/include",
+        "src",
+        "src/pch",
+        "%{IncludeDir.GLFW}",
+    }
+
+    links{
+        "GLFW"
     }
 
     filter "system:windows"

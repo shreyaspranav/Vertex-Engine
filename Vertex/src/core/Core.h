@@ -10,3 +10,5 @@
 	#error Vertex Engine Supports only windows for now!
 
 #endif // VT_PLATFORM_WINDOWS
+
+#define BIT(x) (1 << x)

@@ -12,7 +12,8 @@ project "SandboxApp"
 
     -- Add include dirs
     includedirs {
-        "%{wks.location}/Vertex/src"
+        "%{wks.location}/Vertex/src",
+        "%{wks.location}/Vertex/vendor/spdlog/include",
     }
 
     links {

@@ -1,12 +1,14 @@
 #include <Vertex.h>
 #include <iostream>
 
+
 class SandboxApp : public Vertex::Application
 {
 public:
 	SandboxApp()
 	{
 		std::cout << "Hello Sandbox!\n";
+		VT_LOG_INFO("lOG sANDBOX");
 	}
 	~SandboxApp()
 	{
@@ -14,9 +16,7 @@ public:
 	}
 };
 
-int main()
+Vertex::Application* Vertex::CreateApplication()
 {
-	SandboxApp* app = new SandboxApp();
-	app->Run();
-	delete app;
+	return new SandboxApp();
 }
