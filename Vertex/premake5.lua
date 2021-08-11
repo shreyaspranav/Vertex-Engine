@@ -4,6 +4,9 @@ project "Vertex"
 
     targetdir("%{wks.location}/bin/" .. outputdir .. "/")
     objdir ("%{wks.location}/bin/" .. outputdir .. "/")
+    
+    pchheader "pch.h"
+    pchsource "src/pch/pch.cpp"
 
     files {
         "src/**.h",
