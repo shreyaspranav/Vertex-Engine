@@ -36,3 +36,5 @@
 *.vsproj
 *.user
 *.filters
+vs/
+bin/
