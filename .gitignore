@@ -36,5 +36,5 @@
 *.vsproj
 *.user
 *.filters
-vs/
+.vs/
 bin/
