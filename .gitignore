@@ -33,7 +33,7 @@
 
 # Visual studio clutter
 *.sln
-*.vsproj
+*.vcxproj
 *.user
 *.filters
 .vs/
