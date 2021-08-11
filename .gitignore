@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Visual studio clutter
+*.sln
+*.vsproj
+*.user
+*.filters
