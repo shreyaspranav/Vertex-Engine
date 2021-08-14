@@ -9,6 +9,7 @@ project "Vertex"
     IncludeDir = {}
 
     IncludeDir["GLFW"] = "vendor/GLFW/include"
+    IncludeDir["glad"] = "vendor/glad/include"
 
     pchheader "pch.h"
     pchsource "src/pch/pch.cpp"
@@ -23,10 +24,12 @@ project "Vertex"
         "src",
         "src/pch",
         "%{IncludeDir.GLFW}",
+        "%{IncludeDir.glad}"
     }
 
     links{
         "GLFW",
+        "glad",
         "opengl32.lib"
     }
 
