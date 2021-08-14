@@ -1,0 +1,6 @@
+[submodule "Vertex/vendor/GLFW"]
+	path = Vertex/vendor/GLFW
+	url = https://github.com/shreyaspranav/glfw.git
+[submodule "Vertex/vendor/spdlog"]
+	path = Vertex/vendor/spdlog
+	url = https://github.com/gabime/spdlog.git

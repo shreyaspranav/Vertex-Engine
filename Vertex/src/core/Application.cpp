@@ -1,6 +1,7 @@
 #include <pch.h>
 #include "Application.h"
 #include <iostream>
+#include <gl/GL.h>
 
 namespace Vertex {
 	Application::Application()
@@ -33,6 +34,17 @@ namespace Vertex {
 		window->SetEventCallbackFn(std::bind(&Vertex::Application::OnEvent, this, std::placeholders::_1));
 		while (true)
 		{
+
+
+			glClear(GL_COLOR_BUFFER_BIT);
+			glClearColor(0, 0, 0, 1);
+
+			glBegin(GL_TRIANGLES);
+			glColor3f(1.0, 0.0, 0.0); glVertex3f(-0.5, -0.5, 0.0);
+			glColor3f(0.0, 1.0, 0.0); glVertex3f(0.0, 0.5, 0.0);
+			glColor3f(0.0, 0.0, 1.0); glVertex3f(0.5, -0.5, 0.0);
+			glEnd();
+
 			window->Update();
 		}
 	}

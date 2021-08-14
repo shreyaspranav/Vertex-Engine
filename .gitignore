@@ -435,3 +435,4 @@ bin-int/Debug-windows-x86_64/GLFW.lib.recipe
 bin-int/Debug-windows-x86_64/GLFW.idb
 *.sln
 *.filters
+*.recipe
