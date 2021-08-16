@@ -41,7 +41,7 @@ namespace Vertex
 	class VERTEX_API Event
 	{
 	public:
-		bool event_handled;
+		bool event_handled = 0;
 
 		virtual EventType GetEventType() const = 0;
 		virtual int GetCategoryFlags() const = 0;

@@ -1,6 +1,7 @@
 project "SandboxApp"
     kind "ConsoleApp"
     language "C++"
+    staticruntime "off"
 
     targetdir("%{wks.location}/bin/" .. outputdir .. "/")
     objdir ("%{wks.location}/bin/" .. outputdir .. "/")
@@ -13,6 +14,8 @@ project "SandboxApp"
     -- Add include dirs
     includedirs {
         "%{wks.location}/Vertex/src",
+        "%{wks.location}/Vertex/src/pch",
+        "%{wks.location}/Vertex/vendor/glad/include",
         "%{wks.location}/Vertex/vendor/spdlog/include",
     }
 
@@ -33,7 +36,9 @@ project "SandboxApp"
     filter "configurations:Debug"
         defines "VT_DEBUG"
         symbols "On"
+        buildoptions "/MDd"
 
     filter "configurations:Release"
         defines "VT_RELEASE"
         optimize "On"
+        buildoptions "/MD"

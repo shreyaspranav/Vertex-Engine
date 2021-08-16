@@ -6,7 +6,7 @@
 namespace Vertex {
 	Application::Application()
 	{
-
+		
 	}
 
 	Application::~Application()
@@ -21,6 +21,34 @@ namespace Vertex {
 		{
 			exit(0);
 		}
+
+		for (auto it = stack.LayerRBegin(); it != stack.LayerREnd(); ++it)
+		{
+			if (event.event_handled)
+				break;
+
+			(*it)->OnEvent(event);
+		}
+	}
+
+	void Application::PushLayer(Layer* layer)
+	{
+		stack.PushLayer(layer);
+	}
+
+	void Application::PopLayer(Layer* layer)
+	{
+		stack.PopLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		stack.PushOverlay(layer);
+	}
+
+	void Application::PopOverlay(Layer* layer)
+	{
+		stack.PopOverlay(layer);
 	}
 
 	void Application::Run()
@@ -32,18 +60,12 @@ namespace Vertex {
 		window->Init();
 
 		window->SetEventCallbackFn(std::bind(&Vertex::Application::OnEvent, this, std::placeholders::_1));
+
 		while (true)
 		{
-
-
-			glClear(GL_COLOR_BUFFER_BIT);
-			glClearColor(0, 0, 0, 1);
-
-			glBegin(GL_TRIANGLES);
-			glColor3f(1.0, 0.0, 0.0); glVertex3f(-0.5, -0.5, 0.0);
-			glColor3f(0.0, 1.0, 0.0); glVertex3f(0.0, 0.5, 0.0);
-			glColor3f(0.0, 0.0, 1.0); glVertex3f(0.5, -0.5, 0.0);
-			glEnd();
+			for (auto i = stack.LayerBegin(); i != stack.LayerEnd(); ++i) {
+				(*i)->OnUpdate(0.0f);
+			}
 
 			window->Update();
 		}

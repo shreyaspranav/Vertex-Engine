@@ -1,6 +1,7 @@
 project "Vertex"
     kind "SharedLib"
     language "C++"
+    staticruntime "off"
 
     targetdir("%{wks.location}/bin/" .. outputdir .. "/")
     objdir ("%{wks.location}/bin/" .. outputdir .. "/")
@@ -46,7 +47,9 @@ project "Vertex"
     filter "configurations:Debug"
         defines "VT_DEBUG"
         symbols "On"
+        buildoptions "/MDd"
 
     filter "configurations:Release"
         defines "VT_RELEASE"
         optimize "On"
+        buildoptions "/MD"
