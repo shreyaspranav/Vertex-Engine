@@ -1,7 +1,10 @@
 #include <pch.h>
 #include "Application.h"
 #include <iostream>
-#include <gl/GL.h>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include "debug/imgui/ImGuiLayer.h"
+
 
 namespace Vertex {
 	Application::Application()
@@ -56,13 +59,19 @@ namespace Vertex {
 		std::cout << "HelloWorld: Vertex Engine" << std::endl;
 
 		WindowProperties props;
-		Window* window = Window::GetWindow(props);
+		Window* window = window = Window::GetWindow(props);
 		window->Init();
 
 		window->SetEventCallbackFn(std::bind(&Vertex::Application::OnEvent, this, std::placeholders::_1));
 
+		// temporary
+		gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+
+		PushOverlay(new ImGuiLayer());
+
 		while (true)
 		{
+			glClear(GL_COLOR_BUFFER_BIT);
 			for (auto i = stack.LayerBegin(); i != stack.LayerEnd(); ++i) {
 				(*i)->OnUpdate(0.0f);
 			}

@@ -16,6 +16,7 @@ namespace Vertex {
 	void LayerStack::PushLayer(Layer* layer)
 	{
 		m_Layers.emplace(m_Layers.begin() + layer_index, layer);
+		layer->OnAttach();
 		layer_index ++;
 	}
 
@@ -33,6 +34,7 @@ namespace Vertex {
 	void LayerStack::PushOverlay(Layer* overlay)
 	{
 		m_Layers.emplace_back(overlay);
+		overlay->OnAttach();
 	}
 
 	void LayerStack::PopOverlay(Layer* overlay)

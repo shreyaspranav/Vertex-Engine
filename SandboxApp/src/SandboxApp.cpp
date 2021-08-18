@@ -13,7 +13,12 @@ public:
 
 	void OnUpdate(float timestep) override
 	{
-		VT_LOG_INFO("Update ExampleLayer");
+
+	}
+
+	void OnEvent(Vertex::Event& event)
+	{
+		VT_LOG_WARN(event.ToString());
 	}
 
 	void OnDetach() override
@@ -32,6 +37,7 @@ public:
 		VT_LOG_INFO("lOG sANDBOX");
 
 		PushLayer(new ExampleLayer());
+
 	}
 	~SandboxApp()
 	{

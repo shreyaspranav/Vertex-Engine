@@ -164,6 +164,9 @@ namespace Vertex {
 		else {
 			glfwSwapInterval(0);
 		}
+
+		glfwMakeContextCurrent(window);
+		glfwSwapInterval(1);
 	}
 
 	void WindowsWindow::Update()

@@ -1,16 +1,17 @@
 project "Vertex"
     kind "SharedLib"
     language "C++"
-    staticruntime "off"
 
-    targetdir("%{wks.location}/bin/" .. outputdir .. "/")
-    objdir ("%{wks.location}/bin/" .. outputdir .. "/")
+    targetdir ("%{wks.location}/bin/" .. outputdir .. "/")
+    objdir ("%{wks.location}/bin-int/" .. outputdir .. "/")
 
     
     IncludeDir = {}
 
     IncludeDir["GLFW"] = "vendor/GLFW/include"
     IncludeDir["glad"] = "vendor/glad/include"
+    IncludeDir["ImGui"] = "vendor/ImGui/"
+
 
     pchheader "pch.h"
     pchsource "src/pch/pch.cpp"
@@ -25,13 +26,14 @@ project "Vertex"
         "src",
         "src/pch",
         "%{IncludeDir.GLFW}",
-        "%{IncludeDir.glad}"
+        "%{IncludeDir.glad}",
+        "%{IncludeDir.ImGui}"
     }
 
     links{
         "GLFW",
         "glad",
-        "opengl32.lib"
+        "ImGui",
     }
 
     filter "system:windows"

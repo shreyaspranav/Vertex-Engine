@@ -1,10 +1,10 @@
 project "SandboxApp"
     kind "ConsoleApp"
     language "C++"
-    staticruntime "off"
+    staticruntime "Off"
 
-    targetdir("%{wks.location}/bin/" .. outputdir .. "/")
-    objdir ("%{wks.location}/bin/" .. outputdir .. "/")
+    targetdir ("%{wks.location}/bin/" .. outputdir .. "/")
+    objdir ("%{wks.location}/bin-int/" .. outputdir .. "/")
 
     files {
         "src/**.h",

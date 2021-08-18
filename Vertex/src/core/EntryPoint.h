@@ -11,7 +11,6 @@ extern Vertex::Application* Vertex::CreateApplication();
 	void main()
 	{
 		VT_INIT_LOGGER;
-		VT_LOG_ENGINE_ERROR("hELLO eRROR!");
 		auto app = Vertex::CreateApplication();
 		app->Run();
 		delete app;
