@@ -22,6 +22,7 @@ namespace Vertex {
 		VT_LOG_ENGINE_TRACE(event.ToString());
 		if (event.ToString() == "WindowClose")
 		{
+			Application::OnExit();
 			exit(0);
 		}
 
@@ -54,28 +55,43 @@ namespace Vertex {
 		stack.PopOverlay(layer);
 	}
 
+	void Application::OnStart()
+	{
+		OnStart();
+	}
+
+	void Application::OnUpdate(float interval)
+	{
+		OnUpdate(interval);
+		glClear(GL_COLOR_BUFFER_BIT);
+		for (auto i = stack.LayerBegin(); i != stack.LayerEnd(); ++i) {
+			(*i)->OnUpdate(0.0f);
+		}
+	}
+
+	void Application::OnExit()
+	{
+	}
+
 	void Application::Run()
 	{
 		std::cout << "HelloWorld: Vertex Engine" << std::endl;
 
 		WindowProperties props;
-		Window* window = window = Window::GetWindow(props);
+		std::unique_ptr<Window> window = std::unique_ptr<Window>(Window::GetWindow(props));
 		window->Init();
 
 		window->SetEventCallbackFn(std::bind(&Vertex::Application::OnEvent, this, std::placeholders::_1));
 
 		// temporary
 		gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		Application::OnStart();
 
-		PushOverlay(new ImGuiLayer());
+		//PushOverlay(new ImGuiLayer());
 
 		while (true)
 		{
-			glClear(GL_COLOR_BUFFER_BIT);
-			for (auto i = stack.LayerBegin(); i != stack.LayerEnd(); ++i) {
-				(*i)->OnUpdate(0.0f);
-			}
-
+			Application::OnUpdate(0.0);
 			window->Update();
 		}
 	}

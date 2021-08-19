@@ -21,6 +21,10 @@ namespace Vertex {
 		void PushOverlay(Layer* layer);
 		void PopOverlay(Layer* layer);
 
+		virtual void OnStart();
+		virtual void OnUpdate(float interval);
+		virtual void OnExit();
+
 		void Run();
 
 	private:

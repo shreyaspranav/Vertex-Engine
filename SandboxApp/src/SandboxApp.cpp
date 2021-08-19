@@ -32,16 +32,22 @@ class SandboxApp : public Vertex::Application
 {
 public:
 	SandboxApp()
-	{
-		std::cout << "Hello Sandbox!\n";
-		VT_LOG_INFO("lOG sANDBOX");
+	{}
+	~SandboxApp()
+	{}
 
+	void OnStart() override
+	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Vertex::ImGuiLayer());
+	}
+	void OnUpdate(float interval) override
+	{
 
 	}
-	~SandboxApp()
+	void OnExit() override
 	{
-		std::cout << "Bye Sandbox!\n";
+
 	}
 };
 
