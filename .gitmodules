@@ -4,6 +4,3 @@
 [submodule "Vertex/vendor/spdlog"]
 	path = Vertex/vendor/spdlog
 	url = https://github.com/gabime/spdlog.git
-[submodule "Vertex/vendor/ImGui"]
-	path = Vertex/vendor/ImGui
-	url = https://github.com/shreyaspranav/imgui.git
