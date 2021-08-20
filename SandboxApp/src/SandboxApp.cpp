@@ -32,19 +32,30 @@ class SandboxApp : public Vertex::Application
 {
 public:
 	SandboxApp()
-	{}
+	{
+	}
 	~SandboxApp()
 	{}
+
+	void OnCreate() override
+	{
+		width = 1024;
+		height = 576;
+
+		title = "Shreyas";
+	}
 
 	void OnStart() override
 	{
 		PushLayer(new ExampleLayer());
 		PushOverlay(new Vertex::ImGuiLayer());
 	}
+
 	void OnUpdate(float interval) override
 	{
 
 	}
+
 	void OnExit() override
 	{
 

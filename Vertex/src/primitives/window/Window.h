@@ -3,7 +3,6 @@
 #include "core/Log.h"
 
 #include <event/Event.h>
-#include <core/Application.h>
 
 namespace Vertex
 {
@@ -13,8 +12,8 @@ namespace Vertex
 		std::string title;
 		bool vsync;
 
-		WindowProperties(unsigned int width = 1024,
-			unsigned int height = 576,
+		WindowProperties(unsigned int width = 1280,
+			unsigned int height = 720,
 			std::string title = "Vertex Engine",
 			bool vsync = 0)
 			:width(width), height(height), title(title), vsync(vsync) {}
@@ -39,9 +38,14 @@ namespace Vertex
 
 		virtual ~Window() {}
 
+		virtual inline unsigned int GetWidth() = 0;
+		virtual inline unsigned int GetHeight() = 0;
+
 		virtual void Init() = 0;
 		virtual void Update() = 0;
 		virtual void CleanUp() = 0;
+
+		virtual inline void* GetNativeWindow() = 0;
 
 		virtual void SetEventCallbackFn(EventCallbackFn fn) = 0;
 	};

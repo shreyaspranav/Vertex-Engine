@@ -32,6 +32,11 @@ namespace Vertex
 
 		void SetEventCallbackFn(EventCallbackFn fn) override;
 
+		inline unsigned int GetWidth() override { return data.width; }
+		inline unsigned int GetHeight() override { return data.height; }
+
+		inline void* GetNativeWindow() override { return window; }
+
 	private:
 		GLFWwindow* window;
 	};

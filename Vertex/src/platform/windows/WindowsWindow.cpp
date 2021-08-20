@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "WindowsWindow.h"
+#include "core/Log.h"
+#include <event/Event.h>
 
 namespace Vertex {
 	Window* Window::GetWindow(WindowProperties& properties)
@@ -165,8 +167,8 @@ namespace Vertex {
 			glfwSwapInterval(0);
 		}
 
+		// temporary
 		glfwMakeContextCurrent(window);
-		glfwSwapInterval(1);
 	}
 
 	void WindowsWindow::Update()

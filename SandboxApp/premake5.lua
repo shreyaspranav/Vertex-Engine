@@ -17,6 +17,7 @@ project "SandboxApp"
         "%{wks.location}/Vertex/src/pch",
         "%{wks.location}/Vertex/vendor/glad/include",
         "%{wks.location}/Vertex/vendor/spdlog/include",
+        "%{wks.location}/Vertex/vendor/GLFW/include"
     }
 
     links {
