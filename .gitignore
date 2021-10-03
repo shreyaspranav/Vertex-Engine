@@ -437,3 +437,4 @@ bin-int/Debug-windows-x86_64/GLFW.idb
 *.filters
 *.recipe
 *.ini
+/cmake-build-debug/CMakeFiles/clion-log.txt

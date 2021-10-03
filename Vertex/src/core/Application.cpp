@@ -4,6 +4,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "debug/imgui/ImGuiLayer.h"
+#include "test/TestOpenGL.h"
 
 
 namespace Vertex {
@@ -57,6 +58,7 @@ namespace Vertex {
 		// temporary
 		gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		OnStart();
+		PushLayer(new TestOpenGL());
 	}
 
 	void Application::OnUpdate(float interval)
