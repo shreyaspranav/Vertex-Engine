@@ -36,8 +36,6 @@ namespace Vertex {
 		std::string title = "Vertex Engine";
 		bool vsync = 1;
 
-		
-
 	private:
 		LayerStack stack;
 		std::unique_ptr<Window> window;

@@ -32,8 +32,7 @@ class SandboxApp : public Vertex::Application
 {
 public:
 	SandboxApp()
-	{
-	}
+	{}
 	~SandboxApp()
 	{}
 
@@ -48,10 +47,6 @@ public:
 	void OnStart() override
 	{
 		PushLayer(new ExampleLayer());
-
-		//TODO: Make ImGuiLayer acessible from sandbox
-		PushOverlay(new Vertex::ImGuiLayer());
-		
 	}
 
 	void OnUpdate(float interval) override

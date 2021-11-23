@@ -1,11 +1,9 @@
 #include <pch.h>
 #include "Application.h"
 #include <iostream>
-#include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "debug/imgui/ImGuiLayer.h"
-#include "test/TestOpenGL.h"
-
+#include "KeyCodes.h"
+#include "Input.h"
 
 namespace Vertex {
 
@@ -56,16 +54,18 @@ namespace Vertex {
 		window->SetEventCallbackFn(std::bind(&Vertex::Application::OnEvent, this, std::placeholders::_1));
 
 		// temporary
-		gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		OnStart();
-		PushLayer(new TestOpenGL());
+		
 	}
 
 	void Application::OnUpdate(float interval)
 	{
 		OnUpdate(interval);
-		glClear(GL_COLOR_BUFFER_BIT);
-		glClearColor(0, 0, 0, 1);
+		//glClear(GL_COLOR_BUFFER_BIT);
+		//glClearColor(0, 0, 0, 1);
+
+		VT_LOG_ENGINE_INFO("{0}", Input::GetMouseX());
+
 		for (auto i = stack.LayerBegin(); i != stack.LayerEnd(); ++i) {
 			(*i)->OnUpdate(0.0f);
 		}

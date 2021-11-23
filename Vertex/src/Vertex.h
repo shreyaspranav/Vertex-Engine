@@ -10,9 +10,5 @@
 #include "event/KeyEvent.h"
 #include "event/MouseEvent.h"
 #include "event/WindowEvent.h"
-#include "debug/imgui/ImGuiLayer.h"
-#include "test/TestOpenGL.h"
-
-#include "glad/glad.h"
 
 #include "core/EntryPoint.h"
