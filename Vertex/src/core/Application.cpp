@@ -64,7 +64,7 @@ namespace Vertex {
 		//glClear(GL_COLOR_BUFFER_BIT);
 		//glClearColor(0, 0, 0, 1);
 
-		VT_LOG_ENGINE_INFO("{0}", Input::GetMouseX());
+		//VT_LOG_ENGINE_INFO("{0}", Input::GetMouseX());
 
 		for (auto i = stack.LayerBegin(); i != stack.LayerEnd(); ++i) {
 			(*i)->OnUpdate(0.0f);
