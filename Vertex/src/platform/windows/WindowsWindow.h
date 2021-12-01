@@ -7,9 +7,6 @@
 #include <event/KeyEvent.h>
 #include <event/MouseEvent.h>
 
-#include <renderer/G_Context.h>
-#include <platform/opengl/OpenGLContext.h>
-
 namespace Vertex
 {
 	class WindowsWindow : public Window
@@ -25,7 +22,6 @@ namespace Vertex
 			std::string title;
 			bool vsync;
 
-			GraphicsAPI api;
 			EventCallbackFn EventFn;
 		};
 		WindowData data;
@@ -43,7 +39,6 @@ namespace Vertex
 
 	private:
 		GLFWwindow* window;
-		G_Context* context;
 	};
 }
 

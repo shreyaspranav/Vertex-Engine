@@ -6,6 +6,21 @@
 
 namespace Vertex
 {
+	struct WindowProperties
+	{
+		unsigned int width, height;
+		std::string title;
+		bool vsync;
+
+		WindowProperties(unsigned int width = 1280,
+			unsigned int height = 720,
+			std::string title = "Vertex Engine",
+			bool vsync = 0)
+			:width(width), height(height), title(title), vsync(vsync) {}
+	};
+
+	using EventCallbackFn = std::function<void(Event&)>;
+
 	enum GraphicsAPI
 	{
 		VT_OPENGL = 0,
@@ -15,23 +30,6 @@ namespace Vertex
 		VT_OPENGL_ES = 3,
 		VT_VULKAN_MOBILE = 4
 	};
-
-	struct WindowProperties
-	{
-		unsigned int width, height;
-		std::string title;
-		bool vsync;
-
-		GraphicsAPI api;
-
-		WindowProperties(GraphicsAPI api, unsigned int width = 1280,
-			unsigned int height = 720,
-			std::string title = "Vertex Engine",
-			bool vsync = 0)
-			:api(api), width(width), height(height), title(title), vsync(vsync) {}
-	};
-
-	using EventCallbackFn = std::function<void(Event&)>;
 
 	class VERTEX_API Window
 	{

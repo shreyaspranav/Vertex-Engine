@@ -42,7 +42,7 @@ namespace Vertex {
 	void Application::OnCreate()
 	{
 		OnCreate();
-		WindowProperties props(GraphicsAPI::VT_OPENGL ,width, height, title, vsync);
+		WindowProperties props(width, height, title, vsync);
 		window = std::unique_ptr<Window>(Window::GetWindow(props));
 		s_Instance = this;
 		VT_LOG_ENGINE_ERROR(props.title);

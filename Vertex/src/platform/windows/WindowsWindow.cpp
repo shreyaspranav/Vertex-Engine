@@ -11,7 +11,6 @@ namespace Vertex {
 
 	WindowsWindow::WindowsWindow(WindowProperties& properties)
 	{
-		data.api = properties.api;
 		data.width = properties.width;
 		data.height = properties.height;
 		data.title = properties.title;
@@ -43,13 +42,9 @@ namespace Vertex {
 		window = glfwCreateWindow(data.width, data.height, data.title.c_str(), NULL, NULL);
 		VT_LOG_ENGINE_TRACE("Window: {0} X {1}, Title: {2}", data.width, data.height, data.title);
 
-		switch (data.api)
-		{
-			case VT_OPENGL:
-				context = new OpenGLContext(this);
-		}
-
 		glfwShowWindow(window);
+		glfwMakeContextCurrent(window);
+
 		glfwSetWindowUserPointer(window, &data);
 
 		glfwSetErrorCallback([](int error_code, const char* description)
@@ -172,12 +167,14 @@ namespace Vertex {
 			glfwSwapInterval(0);
 		}
 
-		context->Init();
+		// temporary
+		glfwMakeContextCurrent(window);
 	}
 
 	void WindowsWindow::Update()
 	{
-		context->SwapBuffers();
+		glfwPollEvents();
+		glfwSwapBuffers(window);
 	}
 
 	void WindowsWindow::CleanUp()
