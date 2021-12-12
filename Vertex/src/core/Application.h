@@ -5,7 +5,7 @@
 #include <event/Event.h>
 #include "Log.h"
 #include "Layer.h"
-#include "primitives/window/Window.h"
+#include "primitives/Window.h"
 #include "LayerStack.h"
 
 namespace Vertex {

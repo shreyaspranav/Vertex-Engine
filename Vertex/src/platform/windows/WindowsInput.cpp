@@ -6,7 +6,8 @@
 
 namespace Vertex {
 
-	Input* Input::s_Input_Instance = new WindowsInput();
+	// This value changes to "new WindowsInput();" if the operating platform is Windows
+	Input* Input::s_Input_Instance = nullptr;
 
 	bool WindowsInput::IsKeyPressedImpl(KeyCode code)
 	{

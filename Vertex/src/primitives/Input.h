@@ -1,19 +1,23 @@
 #pragma once
 
-#include "Core.h"
-#include "KeyCodes.h"
+#include "core/Core.h"
+#include "core/KeyCodes.h"
 
 namespace Vertex {
 	
 	class VERTEX_API Input
 	{
 	public:
+
+		static void Init();
+
 		static bool IsKeyPressed(KeyCode code) { return s_Input_Instance -> IsKeyPressedImpl(code); }
 		static bool IsMouseButtonPressed(KeyCode code) { return s_Input_Instance->IsMouseButtonPressedImpl(code); }
 		static int GetMouseX() { return s_Input_Instance->GetMouseXImpl(); }
 		static int GetMouseY() { return s_Input_Instance->GetMouseXImpl(); }
 
 	protected:
+
 		virtual bool IsKeyPressedImpl(KeyCode code) = 0;
 		virtual bool IsMouseButtonPressedImpl(KeyCode code) = 0;
 		virtual int GetMouseXImpl() = 0;

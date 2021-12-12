@@ -3,7 +3,8 @@
 #include <iostream>
 #include <GLFW/glfw3.h>
 #include "KeyCodes.h"
-#include "Input.h"
+#include "platform/PlatformDependent.h"
+#include "primitives/Input.h"
 
 namespace Vertex {
 
@@ -53,7 +54,7 @@ namespace Vertex {
 		window->Init();
 		window->SetEventCallbackFn(std::bind(&Vertex::Application::OnEvent, this, std::placeholders::_1));
 
-		// temporary
+		Input::Init();
 		OnStart();
 		
 	}
@@ -64,7 +65,7 @@ namespace Vertex {
 		//glClear(GL_COLOR_BUFFER_BIT);
 		//glClearColor(0, 0, 0, 1);
 
-		//VT_LOG_ENGINE_INFO("{0}", Input::GetMouseX());
+		VT_LOG_ENGINE_INFO("{0}", Input::GetMouseX());
 
 		for (auto i = stack.LayerBegin(); i != stack.LayerEnd(); ++i) {
 			(*i)->OnUpdate(0.0f);

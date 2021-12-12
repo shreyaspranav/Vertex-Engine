@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/Input.h"
+#include "primitives/Input.h"
 
 namespace Vertex {
 	class WindowsInput : public Input

@@ -31,7 +31,7 @@ project "Vertex"
     }
 
     links{
-        "GLFW",
+        "%{wks.location}/bin/Debug-windows-x86_64/glfw3.lib",
         "glad",
         "ImGui",
     }

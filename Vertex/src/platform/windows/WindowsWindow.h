@@ -1,5 +1,5 @@
 #pragma once
-#include "primitives/window/Window.h"
+#include "primitives/Window.h"
 
 #include <GLFW/glfw3.h>
 #include <event/Event.h>

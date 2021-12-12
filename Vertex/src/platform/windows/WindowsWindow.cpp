@@ -4,10 +4,8 @@
 #include <event/Event.h>
 
 namespace Vertex {
-	Window* Window::GetWindow(WindowProperties& properties)
-	{
-		return new WindowsWindow(properties);
-	}
+
+	// To be removed
 
 	WindowsWindow::WindowsWindow(WindowProperties& properties)
 	{
