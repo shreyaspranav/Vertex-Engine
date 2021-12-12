@@ -40,6 +40,8 @@ namespace Vertex {
 		LayerStack stack;
 		std::unique_ptr<Window> window;
 		static Application* s_Instance;
+
+		Context* context;
 	};
 
 	// To be Defined in the client!

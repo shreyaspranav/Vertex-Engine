@@ -3,6 +3,7 @@
 #include "core/Log.h"
 
 #include <event/Event.h>
+#include "Context.h"
 
 namespace Vertex
 {
@@ -26,9 +27,6 @@ namespace Vertex
 		VT_OPENGL = 0,
 		VT_VULKAN = 1,
 		VT_DIRECTX = 2,
-
-		VT_OPENGL_ES = 3,
-		VT_VULKAN_MOBILE = 4
 	};
 
 	class VERTEX_API Window
@@ -48,5 +46,10 @@ namespace Vertex
 		virtual inline void* GetNativeWindow() = 0;
 
 		virtual void SetEventCallbackFn(EventCallbackFn fn) = 0;
+
+		virtual void SetGraphicsAPI(GraphicsAPI api) = 0;
+
+	protected:
+		GraphicsAPI m_Api;
 	};
 }

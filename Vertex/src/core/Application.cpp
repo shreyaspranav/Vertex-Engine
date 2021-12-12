@@ -5,6 +5,7 @@
 #include "KeyCodes.h"
 #include "platform/PlatformDependent.h"
 #include "primitives/Input.h"
+#include "platform/opengl/OpenGLContext.h"
 
 namespace Vertex {
 
@@ -46,11 +47,11 @@ namespace Vertex {
 		WindowProperties props(width, height, title, vsync);
 		window = std::unique_ptr<Window>(Window::GetWindow(props));
 		s_Instance = this;
-		VT_LOG_ENGINE_ERROR(props.title);
 	}
 
 	void Application::OnStart()
 	{
+		window->SetGraphicsAPI(GraphicsAPI::VT_OPENGL);
 		window->Init();
 		window->SetEventCallbackFn(std::bind(&Vertex::Application::OnEvent, this, std::placeholders::_1));
 
@@ -62,10 +63,6 @@ namespace Vertex {
 	void Application::OnUpdate(float interval)
 	{
 		OnUpdate(interval);
-		//glClear(GL_COLOR_BUFFER_BIT);
-		//glClearColor(0, 0, 0, 1);
-
-		VT_LOG_ENGINE_INFO("{0}", Input::GetMouseX());
 
 		for (auto i = stack.LayerBegin(); i != stack.LayerEnd(); ++i) {
 			(*i)->OnUpdate(0.0f);

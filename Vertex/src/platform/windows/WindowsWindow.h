@@ -32,13 +32,19 @@ namespace Vertex
 
 		void SetEventCallbackFn(EventCallbackFn fn) override;
 
+		inline void SetGraphicsAPI(GraphicsAPI api) override;
+
 		inline unsigned int GetWidth() override { return data.width; }
 		inline unsigned int GetHeight() override { return data.height; }
 
 		inline void* GetNativeWindow() override { return window; }
+		
+	private:
+		Context* GetContext(GraphicsAPI api, GLFWwindow* window_handle);
 
 	private:
 		GLFWwindow* window;
+		Context* graphicsContext;
 	};
 }
 

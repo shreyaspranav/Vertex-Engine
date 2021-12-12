@@ -3,6 +3,8 @@
 #include "core/Log.h"
 #include <event/Event.h>
 
+#include "platform/opengl/OpenGLContext.h"
+
 namespace Vertex {
 
 	// To be removed
@@ -18,6 +20,11 @@ namespace Vertex {
 	void WindowsWindow::SetEventCallbackFn(EventCallbackFn fn)
 	{
 		data.EventFn = fn;
+	}
+
+	inline void WindowsWindow::SetGraphicsAPI(GraphicsAPI api)
+	{
+		m_Api = api;
 	}
 
 	WindowsWindow::~WindowsWindow()
@@ -41,7 +48,9 @@ namespace Vertex {
 		VT_LOG_ENGINE_TRACE("Window: {0} X {1}, Title: {2}", data.width, data.height, data.title);
 
 		glfwShowWindow(window);
-		glfwMakeContextCurrent(window);
+
+		graphicsContext = WindowsWindow::GetContext(m_Api, window);
+		graphicsContext->Init();
 
 		glfwSetWindowUserPointer(window, &data);
 
@@ -173,11 +182,32 @@ namespace Vertex {
 	{
 		glfwPollEvents();
 		glfwSwapBuffers(window);
+
+		graphicsContext->Update();
 	}
 
 	void WindowsWindow::CleanUp()
 	{
 		glfwDestroyWindow(window);
 		glfwTerminate();
+	}
+
+	Context* WindowsWindow::GetContext(GraphicsAPI api, GLFWwindow* window_handle)
+	{
+		Context* to_return = nullptr;
+
+		if (api == GraphicsAPI::VT_OPENGL) {
+			return new OpenGLContext(window_handle);
+		}
+
+		if (api == GraphicsAPI::VT_VULKAN) {
+			
+		}
+
+		if (api == GraphicsAPI::VT_DIRECTX) {
+			
+		}
+
+		
 	}
 }
