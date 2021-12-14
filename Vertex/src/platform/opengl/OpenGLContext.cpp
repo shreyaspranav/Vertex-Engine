@@ -16,11 +16,16 @@ namespace Vertex {
 		{
 			VT_LOG_ENGINE_ERROR("Failed to load Glad!");
 		}
+
+		VT_LOG_ENGINE_WARN("OpenGL Info: \n");
+		VT_LOG_ENGINE_INFO("Vendor: {0}", glGetString(GL_VENDOR));
+		VT_LOG_ENGINE_INFO("Renderer: {0}", glGetString(GL_RENDERER));
+		VT_LOG_ENGINE_INFO("Version: {0} \n", glGetString(GL_VERSION));
 	}
 
 	void OpenGLContext::Update()
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glClearColor(1, 0, 1, 1);
+		glClearColor(0, 0, 0, 1);
 	}
 }

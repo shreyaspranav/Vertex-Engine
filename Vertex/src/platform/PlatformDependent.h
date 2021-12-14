@@ -33,7 +33,7 @@ namespace Vertex {
 		#endif
 		
 		#ifdef VT_PLATFORM_LINUX
-				// TODO	
+			// TODO	
 		#endif
 		
 		#ifdef VT_PLATFORM_MAC

@@ -7,6 +7,9 @@
 #include "primitives/Input.h"
 #include "platform/opengl/OpenGLContext.h"
 
+
+#include "tmp/TestLayer.h"
+
 namespace Vertex {
 
 	Application* Application::s_Instance = nullptr;
@@ -56,6 +59,9 @@ namespace Vertex {
 		window->SetEventCallbackFn(std::bind(&Vertex::Application::OnEvent, this, std::placeholders::_1));
 
 		Input::Init();
+
+		Layer* test = new TestLayer();
+		PushLayer(test);
 		OnStart();
 		
 	}

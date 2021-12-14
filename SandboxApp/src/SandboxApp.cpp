@@ -18,7 +18,6 @@ public:
 
 	void OnEvent(Vertex::Event& event)
 	{
-		VT_LOG_WARN(event.ToString());
 	}
 
 	void OnDetach() override
